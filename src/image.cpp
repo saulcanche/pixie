@@ -6,13 +6,13 @@ Image create_image(int w, int h){
     img.width = w;
     img.height = h;
     img.pixels.resize(h);
-    for(size_t i = 0; i < h; i++){
+    for(size_t i = 0; i < img.height; i++){
         img.pixels[i].resize(img.width);
     }
     return img;
 }
 
-void set_pixel(Image& img, int x, int y, Color col){
+void set_pixel(Image& img, int y, int x, Color col){
     img.pixels[y][x] = col;
 }
 
@@ -28,4 +28,10 @@ void save_ppm(const std::string filename, Image& img){
         }
     }
     file.close();
+}
+
+void fill_image(Image& img, Color col){
+    for(size_t i = 0; i < img.height; i++){
+        for(size_t j = 0; j < img.width; j++) set_pixel(img, i, j, col);
+    }
 }
