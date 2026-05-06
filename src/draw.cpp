@@ -13,10 +13,19 @@ void draw_rectangle(Image &img, Point p1, size_t w, size_t h, Color col){
         for(size_t j = p1.x; j < p1.x + w; j++) set_pixel(img, i, j, col);
     }
 }
-/*
-void draw_circle(Image img, Point c, int radiu, Color col){
-    return;
+void draw_circle(Image &img, Point c, size_t radiu, Color col){
+    if(!is_valid(img, c)) return;
+    if(!is_valid(img, {c.x -1 + radiu, c.y + radiu - 1})) return;
+    if(!is_valid(img, {c.x - radiu, c.y + radiu - 1})) return;
+    for(size_t i = c.y - radiu; i < c.y + radiu; i++){
+        for(size_t j = c.x - radiu; j < c.x + radiu; j++){
+            long check = (j - c.x)*(j - c.x) + (i - c.y)*(i - c.y) - (long)radiu*radiu;
+            if(check > 0) continue;
+            set_pixel(img, i, j, col);
+        }
+    }
 }
+/*
 void draw_line_2P(Image img, Point p1, Point p2, Color col){
     return;
 }
