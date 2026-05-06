@@ -11,7 +11,7 @@ struct Image{
 };
 
 Image create_image(int w, int h);
-void set_pixel(Image& img, int x, int y, Color c);
+void set_pixel(Image& img, int y, int x, Color c);
 void save_ppm(const std::string filename, Image& img);
 void fill_image(Image& img, Color Col);
 #endif
