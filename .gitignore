@@ -1,7 +1,7 @@
 # imagenes
-.ppm
+*.ppm
 
 # executable
 
-.o
+*.o
 pixie
